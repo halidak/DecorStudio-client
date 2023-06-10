@@ -1,0 +1,15 @@
+img{
+    height: 40px;
+}
+
+footer {
+    height: 130px;
+    padding: 15px;
+    background-color:  var(--navbar-footer-color);
+    /* margin-top: vh; */
+    width: 100%;
+}
+
+.nav-link{
+    color: var(--primary-color);
+}
