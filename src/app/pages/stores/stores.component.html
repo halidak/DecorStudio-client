@@ -1,1 +1,28 @@
-<p>stores works!</p>
+<section class="featured-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center mt-5">
+                <h2 class="text-white">Naše radnje</h2>
+                <p class="text-white">Nase radnje na razlicitim lokacijama</p>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-lg-3" *ngFor="let s of stores">
+                <div (click)="openCatalog(s.id)">
+                <mat-card >
+                    <mat-card-header>
+                        <mat-card-title>{{s.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img src="assets/images/radnje.jpg">
+                    <br>
+                    <mat-card-content>
+                        <p>{{s.city}}</p>
+                        <p>{{s.address}}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

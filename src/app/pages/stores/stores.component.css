@@ -1,0 +1,14 @@
+section {
+   margin-top: 150px;
+}
+
+.featured-section {
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-bottom: 130px;
+    background-color: var(--primary-color);
+}
+
+a {
+    all: unset;
+  }
