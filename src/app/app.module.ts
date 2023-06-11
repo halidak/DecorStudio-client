@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { StoreDetailsComponent } from './pages/store-details/store-details.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LoginComponent } from './forms/login/login.component';
+import { RegisterComponent } from './forms/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LoginComponent } from './forms/login/login.component';
     StoreDetailsComponent,
     CatalogComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,9 @@ import { LoginComponent } from './forms/login/login.component';
     HttpClientModule,
     MatCardModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

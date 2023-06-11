@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-5 shadow-effect bg-secondary-theme">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h2 class="text-theme-primary">Login</h2>
+                        <p>Please enter your informations to log in</p>
+                        <div *ngIf="error" class="alert alert-danger">Email and password do not match!</div>
+                    </div>
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input formControlName="email" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <div *ngIf="Email?.touched && Email?.invalid">
+                                <p *ngIf="Email?.errors?.['required']" class="errors">Email is required</p>
+                                <p *ngIf="Email?.errors?.['email']" class="errors">Email is invalid</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input formControlName="password" type="password" class="form-control bg-secondary-theme" id="password" placeholder="Password">
+                            <div *ngIf="Password?.touched && Password?.invalid">
+                                <p *ngIf="Password?.errors?.['required']" class="errors">Password is required</p>
+                                <p *ngIf="Password?.errors?.['minlength']" class="errors">Password must be at least 6 characters</p>
+                            </div>
+                            <a routerLink="/resset-password">
+                                <small id="reset-password" class="form-text text-muted">Forgot password?</small>
+                            </a>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary btn-block btn-theme" [disabled]="!form.valid" (click)="login()"> Login </button>
+                        <br>
+                        <a routerLink="/register">
+                            <p>You don't have an account? Please register</p>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

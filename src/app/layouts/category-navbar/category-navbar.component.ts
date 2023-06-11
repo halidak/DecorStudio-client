@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-category-navbar',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class CategoryNavbarComponent {
 
+  constructor(public userService: UserService) { }
 }
