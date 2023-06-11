@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StoreService } from 'src/app/store.service';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-stores',

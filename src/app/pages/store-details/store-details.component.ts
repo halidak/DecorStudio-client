@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CatalogService } from 'src/app/catalog.service';
-import { StoreService } from 'src/app/store.service';
+import { CatalogService } from 'src/app/services/catalog.service';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-store-details',
