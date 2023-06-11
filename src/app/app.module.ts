@@ -11,7 +11,11 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { StoresComponent } from './pages/stores/stores.component';
 import {MatCardModule} from '@angular/material/card';
-import { StoreDetailsComponent } from './pages/store-details/store-details.component'
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import { StoreDetailsComponent } from './pages/store-details/store-details.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
+import { LoginComponent } from './forms/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,18 @@ import { StoreDetailsComponent } from './pages/store-details/store-details.compo
     FooterComponent,
     HomeComponent,
     StoresComponent,
-    StoreDetailsComponent
+    StoreDetailsComponent,
+    CatalogComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

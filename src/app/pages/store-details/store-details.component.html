@@ -1,1 +1,28 @@
-<p>store-details works!</p>
+<div class="section p-5">
+    <div class="container">
+        <h1 class="text-white">{{store.name}}</h1>
+        <p class="text-white">{{store.name}} je jedinstvena radnja smeštena na {{store.city}}, u ulici {{store.address}}. Ova radnja odiše kreativnošću i strašću prema unutrašnjem 
+            uređenju i dekoraciji. Bez obzira na vaš stil i preferencije, {{store.name}} nudi širok spektar proizvoda i usluga koji će ispuniti vaše želje i
+            pretvoriti vaš prostor u oazu lepote i elegancije.</p>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <h1 class="text-center">Naši katalozi</h1>
+    <div class="row justify-content-center">
+            <div class="col-lg-3" *ngFor="let s of catalogs">
+                <div (click)="openCatalogDetails(s.id)">
+                <mat-card >
+                    <mat-card-header>
+                        <mat-card-title>{{s.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img src="assets/images/kat.jpg">
+                    <br>
+                    <mat-card-content>
+                        <p>{{s.city}}</p>
+                        <p>{{s.address}}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>

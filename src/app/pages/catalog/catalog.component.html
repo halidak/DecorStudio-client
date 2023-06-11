@@ -1,0 +1,35 @@
+<div class="section p-5">
+    <div class="container ">
+        <h1 class="text-white">{{catalog.name}}</h1>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <h1 class="text-center">Dostupni dekori</h1>
+    <mat-chip-listbox aria-label="Fish selection">
+        <mat-chip-option>Dekoracija vencanja</mat-chip-option>
+        <mat-chip-option>Dekoracija prostorija</mat-chip-option>
+        <mat-chip-option color="accent">Dekoracija slavlja</mat-chip-option>
+        <mat-chip-option color="warn">Dekoracija automobila</mat-chip-option>
+      </mat-chip-listbox>
+      <br>
+    <div class="row justify-content-center">
+        <div *ngIf="decors.length == 0">
+            <p class="row justify-content-center">Catalog is empty</p>
+        </div>
+            <div class="col-lg-3" *ngFor="let s of decors">
+                <div (click)="openDecor(s.id)">
+                <mat-card >
+                    <mat-card-header>
+                        <mat-card-title>{{s.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img [src]="'' + s.image" alt="Slika">
+                    <br>
+                    <mat-card-content>
+                        <p>{{s.description}}</p>
+                        <p>Cena: {{s.price}} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="euro" class="icon"></mat-icon>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
