@@ -1,1 +1,109 @@
-<p>register works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-5 shadow-effect bg-secondary-theme">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h2 class="text-theme-primary">Sign up</h2>
+                        <p>Please enter your informations to register</p>
+                        <div *ngIf="error" class="alert alert-danger">Email and password do not match!</div>
+                    </div>
+                    <form [formGroup]="registerForm">
+                        <div class="input-wrapper">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input formControlName="firstName" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter first name">
+                            <div *ngIf="FirstName?.touched && FirstName?.invalid">
+                                <p *ngIf="FirstName?.errors?.['required']" class="errors">First Name is required</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input formControlName="lastName" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter last name">
+                            <div *ngIf="LastName?.touched && LastName?.invalid">
+                                <p *ngIf="LastName?.errors?.['required']" class="errors">Last Name is required</p>
+                            </div>
+                        </div>
+                    </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input formControlName="phoneNumber" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter last name">
+                            <div *ngIf="PhoneNumber?.touched && PhoneNumber?.invalid">
+                                <p *ngIf="PhoneNumber?.errors?.['required']" class="errors">Phone Number is required</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input formControlName="email" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <div *ngIf="Email?.touched && Email?.invalid">
+                                <p *ngIf="Email?.errors?.['required']" class="errors">Email is required</p>
+                                <p *ngIf="Email?.errors?.['email']" class="errors">Email is invalid</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input formControlName="password" type="password" class="form-control bg-secondary-theme" id="password" placeholder="Password">
+                            <div *ngIf="Password?.touched && Password?.invalid">
+                                <p *ngIf="Password?.errors?.['required']" class="errors">Password is required</p>
+                                <p *ngIf="Password?.errors?.['pattern']" class="errors">The password must contain at least one uppercase letter, at least one digit, and at least one special character (!@#$%^&*()).</p>
+                            </div>
+                            <!-- <a routerLink="/resset-password">
+                                <small id="reset-password" class="form-text text-muted">Forgot password?</small>
+                            </a> -->
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="password">Confirm Password</label>
+                            <input formControlName="confirmPassword" type="password" class="form-control bg-secondary-theme" id="password" placeholder="Confirm password">
+                            <div *ngIf="ConfirmPassword?.touched && ConfirmPassword?.invalid">
+                                <p *ngIf="ConfirmPassword?.errors?.['required']" class="errors">Confirm Password is required</p>
+                                <p *ngIf="ConfirmPassword?.errors?.['matchPassword']" class="errors">Passwords do not match</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="password">I register as:</label>
+                            <div style="display: flex; justify-content: space-between;">
+                                <!-- <mat-radio-group aria-label="Select an option" id="role">
+                                    <div (click)="hide()">
+                                        <mat-radio-button value="3" checked>Customer</mat-radio-button>
+                                    </div>
+                                    <div (click)="show()">
+                                        <mat-radio-button value="1" >Business Manager</mat-radio-button>
+                                    </div>
+                                    <div (click)="show()">
+                                    <mat-radio-button value="2">Decoration Staff</mat-radio-button>
+                                    </div>
+                                  </mat-radio-group> -->
+                                  <!-- select with options -->
+                                  <select class="form-control bg-secondary-theme" id="role" (change)="onOptionChange($event)">
+                                    <option value="3">Customer</option>
+                                    <option value="1">Business Manager</option>
+                                    <option value="2">Decoration Staff</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group" *ngIf="storesLoaded && showSelect">
+                            <label for="password">Workplace</label>
+                            <select class="form-control bg-secondary-theme" id="workplace" formControlName="workplace">
+                                <option *ngFor="let s of stores" [value]="s.id">{{s.name}}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary btn-block btn-theme" [disabled]="!registerForm.valid" (click)="register()"> Login </button>
+                        <br>
+                        <!-- <a routerLink="/login">
+                            <p>Login</p>
+                        </a> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

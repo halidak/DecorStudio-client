@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { env } from 'src/app/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
+ url = env.url;
 
-  url = environment.url;
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
 
   getCatalogsByStoreId(id: number) {
     return this.http.get(this.url + '/Catalog/get-all/' + id);

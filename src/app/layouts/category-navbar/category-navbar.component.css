@@ -14,3 +14,10 @@ nav{
     margin-right: 10px;
 }
 
+.profile-image {
+    width: 40px; /* Prilagodite veličinu prema potrebi */
+    height: 40px; /* Prilagodite veličinu prema potrebi */
+    border-radius: 50%; /* Postavlja okrugli oblik */
+  }
+  
+

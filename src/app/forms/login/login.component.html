@@ -23,7 +23,7 @@
                             <input formControlName="password" type="password" class="form-control bg-secondary-theme" id="password" placeholder="Password">
                             <div *ngIf="Password?.touched && Password?.invalid">
                                 <p *ngIf="Password?.errors?.['required']" class="errors">Password is required</p>
-                                <p *ngIf="Password?.errors?.['minlength']" class="errors">Password must be at least 6 characters</p>
+                                <p *ngIf="Password?.errors?.['minlength']" class="errors">Password must be at least 8 characters</p>
                             </div>
                             <a routerLink="/resset-password">
                                 <small id="reset-password" class="form-text text-muted">Forgot password?</small>

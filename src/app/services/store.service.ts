@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { env } from 'src/app/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
 
-  private url = environment.url;
+  private url = env.url;
   
 
   constructor(private http: HttpClient) { }

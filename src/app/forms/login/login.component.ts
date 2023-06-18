@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -11,11 +11,11 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent {
 
   error: boolean = false;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, @Inject(Router) private router: Router) { }
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
   get Email() {

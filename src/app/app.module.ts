@@ -14,10 +14,14 @@ import { StoresComponent } from './pages/stores/stores.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { StoreDetailsComponent } from './pages/store-details/store-details.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { LoginComponent } from './forms/login/login.component';
 import { RegisterComponent } from './forms/register/register.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { RegisterComponent } from './forms/register/register.component';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
