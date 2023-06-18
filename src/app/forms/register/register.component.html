@@ -6,13 +6,13 @@
                     <div class="text-center">
                         <h2 class="text-theme-primary">Sign up</h2>
                         <p>Please enter your informations to register</p>
-                        <div *ngIf="error" class="alert alert-danger">Email and password do not match!</div>
+                        <div *ngIf="error" class="alert alert-danger">Email is taken!</div>
                     </div>
                     <form [formGroup]="registerForm">
                         <div class="input-wrapper">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
-                            <input formControlName="firstName" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter first name">
+                            <input formControlName="firstName" type="text" class="form-control bg-secondary-theme" id="firstName" placeholder="Enter first name">
                             <div *ngIf="FirstName?.touched && FirstName?.invalid">
                                 <p *ngIf="FirstName?.errors?.['required']" class="errors">First Name is required</p>
                             </div>
@@ -20,7 +20,7 @@
                         <br>
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
-                            <input formControlName="lastName" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter last name">
+                            <input formControlName="lastName" type="text" class="form-control bg-secondary-theme" id="lastName" aria-describedby="emailHelp" placeholder="Enter last name">
                             <div *ngIf="LastName?.touched && LastName?.invalid">
                                 <p *ngIf="LastName?.errors?.['required']" class="errors">Last Name is required</p>
                             </div>
@@ -29,7 +29,7 @@
                         <br>
                         <div class="form-group">
                             <label for="phoneNumber">Phone Number</label>
-                            <input formControlName="phoneNumber" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp" placeholder="Enter last name">
+                            <input formControlName="phoneNumber" type="text" class="form-control bg-secondary-theme" id="phoneNumber" aria-describedby="emailHelp" placeholder="Enter last name">
                             <div *ngIf="PhoneNumber?.touched && PhoneNumber?.invalid">
                                 <p *ngIf="PhoneNumber?.errors?.['required']" class="errors">Phone Number is required</p>
                             </div>
@@ -41,6 +41,7 @@
                             <div *ngIf="Email?.touched && Email?.invalid">
                                 <p *ngIf="Email?.errors?.['required']" class="errors">Email is required</p>
                                 <p *ngIf="Email?.errors?.['email']" class="errors">Email is invalid</p>
+                                <p *ngIf="registerForm.get('email')?.hasError('usernameAlreadyExists')" class="errors">Email is taken</p>
                             </div>
                         </div>
                         <br>
@@ -57,8 +58,8 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="password">Confirm Password</label>
-                            <input formControlName="confirmPassword" type="password" class="form-control bg-secondary-theme" id="password" placeholder="Confirm password">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input formControlName="confirmPassword" type="password" class="form-control bg-secondary-theme" id="confirmPassword" placeholder="Confirm password">
                             <div *ngIf="ConfirmPassword?.touched && ConfirmPassword?.invalid">
                                 <p *ngIf="ConfirmPassword?.errors?.['required']" class="errors">Confirm Password is required</p>
                                 <p *ngIf="ConfirmPassword?.errors?.['matchPassword']" class="errors">Passwords do not match</p>

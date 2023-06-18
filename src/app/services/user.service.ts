@@ -71,6 +71,10 @@ export class UserService {
     }
     return false;
   }
+
+  getUserEmail(email: string){
+    return this.http.get(`${this.url}/User/get-user-by-email?email=${email}`);
+  }
 }
 
 export interface RegisterDto{

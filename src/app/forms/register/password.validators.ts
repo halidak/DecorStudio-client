@@ -1,14 +1,18 @@
-import { AbstractControl, ValidationErrors, FormGroup } from "@angular/forms";
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-export class CustomValidator {
+export class ConfirmPasswordValidator {
   static matchPassword(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
+    if(control && (control.value !== null || control.value !== undefined)){
+        const cnfpassword = control.value;
 
-    if (password?.value !== confirmPassword?.value) {
-      return { matchPassword: true };
+        const password = control.root.get('password');
+        if(password){
+            const passValue = password.value;
+            if(passValue !== cnfpassword){
+                return { matchPassword: true }
+            }
+        }
     }
-    
     return null;
   }
 }

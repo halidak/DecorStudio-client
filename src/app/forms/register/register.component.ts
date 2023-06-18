@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterDto, UserService } from 'src/app/services/user.service';
-import { CustomValidator } from './password.validators';
 import { StoreService } from 'src/app/services/store.service';
+import { ConfirmPasswordValidator } from './password.validators';
+import { UsernameValidator } from './emailAvailability.validators';
 
 @Component({
   selector: 'app-register',
@@ -35,13 +36,10 @@ export class RegisterComponent implements OnInit {
    registerForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email],  [UsernameValidator.createValidator(this.userService)]),
     phoneNumber: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$/)]),
-    confirmPassword: new FormControl('', [Validators.required]),
-   },
-   {
-      validators: CustomValidator.matchPassword
+    password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$/) ]),
+    confirmPassword: new FormControl('', [Validators.required, ConfirmPasswordValidator.matchPassword]),
    })
 
     get FirstName(){
