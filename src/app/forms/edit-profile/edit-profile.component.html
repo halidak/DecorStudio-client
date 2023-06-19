@@ -1,0 +1,54 @@
+<div class="background">
+    <div class="content">
+        <div *ngIf="success" class="alert alert-success">Profile is updated</div>
+        <div *ngIf="error" class="alert alert-danger">Something went wrong</div>
+        <div class="image-cont">
+            <mat-icon *ngIf="!userService.hasImage()" aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
+            <img *ngIf="userService.hasImage()" src={{image}} alt="Profilna slika" class="round-image">
+        </div>
+      <form [formGroup]="updateProfileForm">
+        <div class="input-wrapper">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input formControlName="firstName" type="text" class="form-control bg-secondary-theme" id="firstName" placeholder="Enter first name">
+            <div *ngIf="FirstName?.touched && FirstName?.invalid">
+                <p *ngIf="FirstName?.errors?.['required']" class="errors">First Name is required</p>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input formControlName="lastName" type="text" class="form-control bg-secondary-theme" id="lastName" aria-describedby="emailHelp" placeholder="Enter last name">
+            <div *ngIf="LastName?.touched && LastName?.invalid">
+                <p *ngIf="LastName?.errors?.['required']" class="errors">Last Name is required</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input formControlName="email" type="email" class="form-control bg-secondary-theme" id="email" aria-describedby="emailHelp"  placeholder="Enter email">
+    </div>
+        <br>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input formControlName="phoneNumber" type="text" class="form-control bg-secondary-theme" id="phoneNumber" aria-describedby="emailHelp" placeholder="Enter last name">
+            <div *ngIf="PhoneNumber?.touched && PhoneNumber?.invalid">
+                <p *ngIf="PhoneNumber?.errors?.['required']" class="errors">Phone Number is required</p>
+            </div>
+        </div>
+        <br>
+        <label for="slika">Profile picture:</label>
+        <input type="file" id="slika" name="slika" accept="image/*" (change)="onImageSelected($event)">
+        <br>
+        <br>
+        <button class="btn btn-primary btn-block btn-theme" [disabled]="!updateProfileForm.valid" (click)="update()"> Update </button>
+        <br>
+        <br>
+        <button class="btn btn-primary btn-block btn-theme2" [disabled]="!updateProfileForm.valid" (click)="openConfirmationDialog()"> Delete profile </button>
+        <br>
+        
+        </form>
+    </div>
+    </div>
+  

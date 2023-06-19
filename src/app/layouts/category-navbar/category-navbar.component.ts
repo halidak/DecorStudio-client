@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class CategoryNavbarComponent implements OnInit{
 
   user: any = []
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
      const userJSON = localStorage.getItem('user');
@@ -20,10 +21,10 @@ export class CategoryNavbarComponent implements OnInit{
 
   logout(){
     this.userService.logout();
-    
+    this.router.navigate(['']);
   }
 
   edit(){
-    //todo navigate to edit
+    this.router.navigate([`edit/${this.user.id}`])
   }
 }

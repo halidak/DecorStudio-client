@@ -5,22 +5,25 @@
                 <li class="nav-item mr-5">
                     <a routerLink="/stores"  class="nav-link">Stores</a>
                 </li>
-                <li class="nav-item mr-5" *ngIf="userService.isLogedIn()">
+                <!-- <li class="nav-item mr-5" *ngIf="userService.isLogedIn()">
                     <a routerLink="" class="nav-link">Your resevations</a>
-                </li>
+                </li> -->
                 <li class="nav-item mr-5" *ngIf="!userService.isLogedIn()">
                     <a routerLink="/login" class="nav-link">Sign up/Login</a>
                 </li>
-               
+                <li class="nav-item mr-5" *ngIf="userService.isManager">
+                    <a routerLink="/warehouses" class="nav-link">Warehouses</a>
+                </li>
             </ul>
         </div>
         <mat-icon *ngIf="!userService.hasImage() && userService.isLogedIn()" aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
         
-        <img *ngIf="userService.hasImage()" class="profile-image" src={{user.image}} alt="">
+        <img *ngIf="userService.hasImage()" class="profile-image" [src]="user.image" alt="">
         
         <button *ngIf="userService.isLogedIn()" mat-button [matMenuTriggerFor]="menu">{{user.firstName}} {{user.lastName}}</button>
             <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="edit()">Edit Profile</button>
+            <button mat-menu-item (click)="edit()">Change Password</button>
             <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
     </div>

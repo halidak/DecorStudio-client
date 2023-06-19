@@ -44,7 +44,15 @@ input[type = text], input[type = email], input[type = password]{
     font-size: 18px;
 }
 
-
+.btn-theme2{
+    height: 50px;
+    border: none;
+    font-size: 13px;
+    background-color: rgb(170, 30, 30);
+    width: 100%;
+    color: white;
+    font-size: 18px;
+}
 
 a {
     text-decoration: none;

@@ -1,0 +1,8 @@
+.section {
+    background-color: var(--primary-color);
+    margin-top: 150px;
+}
+
+.icon{
+    padding-top: 3.2px;
+}

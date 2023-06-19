@@ -75,6 +75,24 @@ export class UserService {
   getUserEmail(email: string){
     return this.http.get(`${this.url}/User/get-user-by-email?email=${email}`);
   }
+
+  getUserById(id: string){
+    return this.http.get(`${this.url}/User/get-user-by-id/${id}`);
+  }
+
+  updateUser(id: string, dto: UpdateDto){
+    return this.http.put(`${this.url}/User/update-user/${id}`, dto);
+  }
+
+  //todo
+  changePassword(id: string, dto: ChangePasswordDto){
+    return this.http.put(`${this.url}/User/change-password/${id}`, dto);
+  }
+
+  deleteUser(id: string){
+    return this.http.delete(`${this.url}/User/delete-user/${id}`);
+  }
+
 }
 
 export interface RegisterDto{
@@ -86,3 +104,12 @@ export interface RegisterDto{
   password: string;
   storeId: number;
 }
+
+export interface UpdateDto{
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  image: string;
+}
+
+export interface ChangePasswordDto {}

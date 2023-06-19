@@ -22,6 +22,11 @@ import { RegisterComponent } from './forms/register/register.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { EditProfileComponent } from './forms/edit-profile/edit-profile.component';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './forms/confirmation-dialog/confirmation-dialog.component';
+import { WarehouseComponent } from './pages/warehouse/warehouse.component';
+import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,10 @@ import {MatButtonModule} from '@angular/material/button';
     CatalogComponent,
     LoginComponent,
     RegisterComponent,
+    EditProfileComponent,
+    ConfirmationDialogComponent,
+    WarehouseComponent,
+    WarehouseDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +58,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCheckboxModule,
     MatRadioModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

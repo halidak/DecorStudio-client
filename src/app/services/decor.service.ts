@@ -13,4 +13,8 @@ export class DecorService {
   getDecorByCatalogId(id: number) {
     return this.http.get(this.url + '/Decor/decore-catalog/' + id);
   }
+
+  getDecorFromWarehouse(id: number){
+    return this.http.get<any[]>(this.url + '/Decor/decore-warehouse/' + id);
+  }
 }

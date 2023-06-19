@@ -1,0 +1,32 @@
+<div class="section p-5">
+    <div class="container">
+        <h1 class="text-white">{{warehouse.name}}</h1>
+        <p class="text-white">{{warehouse.name}} je magacin smešten u ulici {{warehouse.address}}.</p>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <h1 class="text-center">Dekor koji nudimo</h1>
+    <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="addDecor()" aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+            <div class="col-lg-3" *ngFor="let s of decor">
+                <div (click)="decorDetails(s.id)">
+                <mat-card >
+                    <mat-card-header>
+                        <mat-card-title>{{s.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img [src]=s.image>
+                    <br>
+                    <mat-card-content>
+                        <p>Cena: {{s.price}} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="euro" class="icon"></mat-icon>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <br>
