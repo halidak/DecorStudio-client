@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CatalogService } from 'src/app/services/catalog.service';
 import { DecorService } from 'src/app/services/decor.service';
 
@@ -16,7 +16,8 @@ export class CatalogComponent implements OnInit{
   catalog: any = {};
   constructor(private decorService: DecorService, 
     private route: ActivatedRoute,
-    private catalogService: CatalogService) { }
+    private catalogService: CatalogService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(param => {
@@ -40,7 +41,7 @@ export class CatalogComponent implements OnInit{
   }
 
   openDecor(id: number){
-
+    this.router.navigate(['/decor/', id])
   }
 
 }

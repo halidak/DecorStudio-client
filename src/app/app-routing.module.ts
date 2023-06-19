@@ -11,6 +11,8 @@ import { EditProfileComponent } from './forms/edit-profile/edit-profile.componen
 import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 import { RoleGuard } from './role.guard';
 import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-details.component';
+import { DecorDetailsComponent } from './pages/decor-details/decor-details.component';
+import { AddDecorComponent } from './forms/add-decor/add-decor.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -21,7 +23,9 @@ const routes: Routes = [
    { path: 'register', component: RegisterComponent },
    { path: 'edit/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
    { path: 'warehouses', component:WarehouseComponent, canActivate: [RoleGuard], data: {allowedRole: 1}},
-   { path: 'warehouse/:id', component:WarehouseDetailsComponent, canActivate: [RoleGuard], data: {allowedRole: 1}}
+   { path: 'warehouse/:id', component:WarehouseDetailsComponent, canActivate: [RoleGuard], data: {allowedRole: 1}},
+   { path: 'decor/:id', component:DecorDetailsComponent },
+   { path: 'add-decor', component:AddDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
 ];
 
 @NgModule({

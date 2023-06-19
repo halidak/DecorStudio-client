@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DecorService } from 'src/app/services/decor.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 
@@ -14,7 +14,7 @@ export class WarehouseDetailsComponent implements OnInit{
   id: number = 0;
   warehouse: any = [];
 
-  constructor(private decorService: DecorService, private route: ActivatedRoute, private warehouseServie: WarehouseService) { }
+  constructor(private decorService: DecorService, private route: ActivatedRoute, private warehouseServie: WarehouseService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -33,11 +33,11 @@ export class WarehouseDetailsComponent implements OnInit{
   }
 
   decorDetails(id: number){
-
+    this.router.navigate([`/decor/${id}`])
   }
 
   addDecor(){
-    
+    this.router.navigate([`/add-decor`])
   }
 
 }

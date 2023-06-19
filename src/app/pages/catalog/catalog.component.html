@@ -19,6 +19,7 @@
         </div>
             <div class="col-lg-3" *ngFor="let s of decors">
                 <div (click)="openDecor(s.id)">
+                    <br>
                 <mat-card >
                     <mat-card-header>
                         <mat-card-title>{{s.name}}</mat-card-title>
@@ -29,6 +30,8 @@
                         <p>Cena: {{s.price}} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="euro" class="icon"></mat-icon>
                     </mat-card-content>
                 </mat-card>
+                <br>
+                <br>
             </div>
         </div>
     </div>

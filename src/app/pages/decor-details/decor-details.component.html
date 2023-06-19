@@ -1,0 +1,21 @@
+<div class="section">
+   <div class="small-container single-product">
+    <div class="row">
+        <div class="col-2">
+            <img [src]=decor.image>
+        </div>
+    </div>
+    <div class="col-2">
+        <p>Decor</p>
+        <h1>{{decor.name}}</h1>
+        <mat-chip  [ngStyle]="{ 'background-color': '#EA7250', 'color': '#ffffff' }">
+            {{decor.type}}
+          </mat-chip>
+        <h4>Cena: {{decor.price}} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="euro" class="icon"></mat-icon></h4>
+        <br>
+        <p>{{decor.description}}</p>
+        <br>
+        <button *ngIf="userService.isCustomer()" class="btn btn-primary btn-block btn-theme">Rezervisi</button>
+    </div>
+   </div>
+</div>

@@ -27,6 +27,8 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { ConfirmationDialogComponent } from './forms/confirmation-dialog/confirmation-dialog.component';
 import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-details.component';
+import { DecorDetailsComponent } from './pages/decor-details/decor-details.component';
+import { AddDecorComponent } from './forms/add-decor/add-decor.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-d
     ConfirmationDialogComponent,
     WarehouseComponent,
     WarehouseDetailsComponent,
+    DecorDetailsComponent,
+    AddDecorComponent,
   ],
   imports: [
     BrowserModule,

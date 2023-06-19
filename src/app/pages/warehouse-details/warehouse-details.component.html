@@ -14,6 +14,9 @@
     </div>
     <br>
     <div class="row justify-content-center">
+        <div *ngIf="decor.length == 0">
+            <p class="row justify-content-center">Warehouse is empty</p>
+        </div>
             <div class="col-lg-3" *ngFor="let s of decor">
                 <div (click)="decorDetails(s.id)">
                 <mat-card >

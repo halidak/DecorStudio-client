@@ -11,7 +11,7 @@
                 <li class="nav-item mr-5" *ngIf="!userService.isLogedIn()">
                     <a routerLink="/login" class="nav-link">Sign up/Login</a>
                 </li>
-                <li class="nav-item mr-5" *ngIf="userService.isManager">
+                <li class="nav-item mr-5" *ngIf="userService.isManager()">
                     <a routerLink="/warehouses" class="nav-link">Warehouses</a>
                 </li>
             </ul>
