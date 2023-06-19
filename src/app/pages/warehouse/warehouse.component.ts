@@ -11,7 +11,7 @@ import { WarehouseService } from 'src/app/services/warehouse.service';
 export class WarehouseComponent implements OnInit {
 
   warehouses: any[] =[];
-  user: any = []
+  user: any = [];
   constructor(private warehouseService: WarehouseService, private router: Router) { }
 
   ngOnInit(): void {
@@ -26,6 +26,6 @@ export class WarehouseComponent implements OnInit {
   }
 
   openWarehouse(id: number){
-    this.router.navigate([`/warehouse/${id}`])
+    this.router.navigate([`/warehouse/${id}/`])
   }
 }

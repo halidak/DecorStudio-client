@@ -5,22 +5,41 @@
         <h1 class="text-theme-primary">Add New Decor</h1>
       </div>
     </div>
-    <form>
+    <form [formGroup]="form">
       <div class="row">
         <div class="col-md-7">
           <div class="card shadow-effect">
             <div class="card-body">
               <div class="form-group">
                 <label for="name">Decor Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter Decor Name">
+                <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter Decor Name">
+                <div *ngIf="Name?.touched && Name?.invalid">
+                  <p *ngIf="Name?.errors?.['required']" class="errors">Name is required</p>
+                </div>
               </div>
+              <br>
               <div class="form-group">
                 <label for="name">Price</label>
-                <input type="number" class="form-control" id="name" placeholder="Enter Decor Price">
+                <input formControlName="price" type="number" class="form-control" id="name" placeholder="Enter Decor Price">
+                <div *ngIf="Price?.touched && Price?.invalid">
+                  <p *ngIf="Price?.errors?.['required']" class="errors">Price is required</p>
+                </div>
               </div>
+              <br>
+              <div class="form-group">
+                <label for="name">Amount</label>
+                <input formControlName="amount" type="number" class="form-control" id="name" placeholder="Enter Decor Price">
+                <div *ngIf="Amount?.touched && Amount?.invalid">
+                  <p *ngIf="Amount?.errors?.['required']" class="errors">Amount is required</p>
+                </div>
+              </div>
+              <br>
               <div class="form-group">
                 <label for="name">Description</label>
-                <textarea cols="20" rows="5" class="form-control"></textarea>
+                <textarea formControlName="description" cols="20" rows="5" class="form-control" placeholder="Enter Decor Description"></textarea>
+                <div *ngIf="Description?.touched && Description?.invalid">
+                  <p *ngIf="Description?.errors?.['required']" class="errors">Description is required</p>
+                  </div>
               </div>
             </div>
           </div>
@@ -30,19 +49,23 @@
             <div class="card-body">
               <div class="form-group">
                 <label>Select Type:</label>
-                <select class="form-control">
-                  <option>Wedding</option>
-                  <option>Engagement</option>
-                  <option>Birthday</option>
-                  <option>Other</option>
+                <select formControlName="type" class="form-control" id="type">
+                  <option value="Wedding">Wedding</option>
+                  <option value="Engagement">Engagement</option>
+                  <option value="Birthday">Birthday</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
+              <br>
               <div class="form-group">
                 <label for="name">Upload Image</label>
-                <input type="file" class="form-control" id="name" placeholder="Enter Decor Name">
+                <input formControlName="image" type="file" class="form-control" id="imageInput" placeholder="Enter Decor Name">
+                <div *ngIf="Image?.touched && Image?.invalid">
+                  <p *ngIf="Image?.errors?.['required']" class="errors">Image is required</p>
+                </div>
               </div>
               <br>
-              <button class="btn btn-primary btn-block btn-theme" > Add Decor </button>
+              <button class="btn btn-primary btn-block btn-theme" [disabled]="!form.valid" (click)="addDecor()"> Add Decor </button>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CategoryNavbarComponent implements OnInit{
 
-  user: any = []
+  user: any = [];
   constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {

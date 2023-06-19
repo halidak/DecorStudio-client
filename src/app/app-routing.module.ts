@@ -24,8 +24,9 @@ const routes: Routes = [
    { path: 'edit/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
    { path: 'warehouses', component:WarehouseComponent, canActivate: [RoleGuard], data: {allowedRole: 1}},
    { path: 'warehouse/:id', component:WarehouseDetailsComponent, canActivate: [RoleGuard], data: {allowedRole: 1}},
-   { path: 'decor/:id', component:DecorDetailsComponent },
-   { path: 'add-decor', component:AddDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
+   { path: 'decor/:id/:warehouseId', component:DecorDetailsComponent },
+   { path: 'add-decor/:id', component:AddDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
+   { path: 'decor/:id', component: DecorDetailsComponent }
 ];
 
 @NgModule({

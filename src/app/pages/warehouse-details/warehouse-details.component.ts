@@ -33,11 +33,11 @@ export class WarehouseDetailsComponent implements OnInit{
   }
 
   decorDetails(id: number){
-    this.router.navigate([`/decor/${id}`])
+    this.router.navigate([`/decor/${id}/${this.warehouse.id}`])
   }
 
   addDecor(){
-    this.router.navigate([`/add-decor`])
+    this.router.navigate([`/add-decor/${this.id}`])
   }
 
 }

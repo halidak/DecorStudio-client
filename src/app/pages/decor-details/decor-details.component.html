@@ -16,6 +16,7 @@
         <p>{{decor.description}}</p>
         <br>
         <button *ngIf="userService.isCustomer()" class="btn btn-primary btn-block btn-theme">Rezervisi</button>
+        <button *ngIf="userService.isManager()" class="btn btn-danger" (click)="openConfirmationDialog()">Obrisi dekor</button>
     </div>
    </div>
 </div>

@@ -41,7 +41,7 @@ export class CatalogComponent implements OnInit{
   }
 
   openDecor(id: number){
-    this.router.navigate(['/decor/', id])
+    this.router.navigate([`/decor/`, +id])
   }
 
 }

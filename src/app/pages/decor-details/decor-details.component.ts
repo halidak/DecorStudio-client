@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DecorService } from 'src/app/services/decor.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
+
 
 @Component({
   selector: 'app-decor-details',
@@ -12,7 +15,8 @@ export class DecorDetailsComponent implements OnInit {
 
   id: number = 0;
   decor: any = [];
-  constructor(private decorService: DecorService, private route: ActivatedRoute, public userService: UserService) { }
+  warehouseId: number = 0;
+  constructor(private decorService: DecorService, private route: ActivatedRoute, public userService: UserService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -24,6 +28,31 @@ export class DecorDetailsComponent implements OnInit {
       err => {
         console.log(err)
       })
+    })
+
+    this.route.paramMap.subscribe(params => {
+      this.warehouseId = Number(params.get('warehouseId') ?? 0);
+    })
+
+  }
+
+  openConfirmationDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteDecor();
+        this.router.navigate([`warehouse/${this.warehouseId}`]);
+      }
+    });
+  }
+
+  deleteDecor(){
+    this.decorService.deleteDecor(this.id).subscribe(res => {
+      console.log(res);
+    },
+    err => {
+      console.log(err);
     })
   }
 }
