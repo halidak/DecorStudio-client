@@ -16,7 +16,12 @@
         <p>{{decor.description}}</p>
         <br>
         <button *ngIf="userService.isCustomer()" class="btn btn-primary btn-block btn-theme">Rezervisi</button>
-        <button *ngIf="userService.isManager()" class="btn btn-danger" (click)="openConfirmationDialog()">Obrisi dekor</button>
+        <button mat-fab color="warn"  (click)="openConfirmationDialog()" aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button class="edit" mat-fab color="primary" (click)="openEditForm()" aria-label="Example icon button with a edit icon">
+            <mat-icon>edit</mat-icon>
+          </button>
     </div>
    </div>
 </div>

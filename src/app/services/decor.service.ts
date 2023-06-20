@@ -29,6 +29,18 @@ export class DecorService {
   deleteDecor(id: number){
     return this.http.delete(this.url + '/Decor/delete-decor/' + id);
   }
+
+  getDecorFromWarehouseWithStoreId(storeId: number, catalogId: number){
+    return this.http.get(this.url + `/Decor/decores-from-warehouses/${storeId}/${catalogId}`);
+  }
+
+  addDecoreInCatalog(ids: addDecor){
+    return this.http.post(this.url + `/Catalog/add-decor`, ids);
+  }
+
+  updateDecor(decor: SaveDecor, id: number){
+    return this.http.put(this.url + `/Decor/update-decor/${id}`, decor);
+  }
 }
 
 export interface SaveDecor{
@@ -38,4 +50,9 @@ export interface SaveDecor{
   type: string;
   description: string;
   image: string | File;
+}
+
+export interface addDecor{
+  catalogId: number;
+  decorId: number;
 }

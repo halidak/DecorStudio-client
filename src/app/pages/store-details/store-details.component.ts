@@ -40,7 +40,7 @@ export class StoreDetailsComponent implements OnInit {
   }
 
   openCatalogDetails(id: number){
-    this.route.navigate([`/catalog/${id}`])
+    this.route.navigate([`/catalog/${this.store.id}/${id}`])
   }
 
 

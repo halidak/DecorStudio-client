@@ -17,4 +17,15 @@ export class WarehouseService {
   getWarehouse(id: number){
     return this.http.get(`${this.url}/Warehouse/warehouse/${id}`);
   }
+
+  addWarehouse(warehouse: addWarehouse){
+    return this.http.post(`${this.url}/Warehouse/add-warehouse`, warehouse);
+  }
+}
+
+export interface addWarehouse{
+  name: string;
+  address: string,
+  size: number,
+  storeId: number
 }

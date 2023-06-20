@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DecorService, SaveDecor } from 'src/app/services/decor.service';
+import { customValidator } from '../add-warehouse-dialog/size.validators';
 
 @Component({
   selector: 'app-add-decor',
@@ -22,7 +23,7 @@ export class AddDecorComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    amount: new FormControl('', [Validators.required]),
+    amount: new FormControl('', [Validators.required, customValidator.valueInvalid]),
     type: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required])

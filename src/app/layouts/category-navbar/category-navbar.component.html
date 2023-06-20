@@ -23,7 +23,7 @@
         <button *ngIf="userService.isLogedIn()" mat-button [matMenuTriggerFor]="menu">{{user.firstName}} {{user.lastName}}</button>
             <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="edit()">Edit Profile</button>
-            <button mat-menu-item (click)="edit()">Change Password</button>
+            <button mat-menu-item (click)="change()">Change Password</button>
             <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
     </div>

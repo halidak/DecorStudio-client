@@ -13,6 +13,9 @@
         <mat-chip-option color="warn">Dekoracija automobila</mat-chip-option>
       </mat-chip-listbox>
       <br>
+      <button mat-mini-fab color="primary" *ngIf="userService.isManager()" (click)="openDialog()" aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
     <div class="row justify-content-center">
         <div *ngIf="decors.length == 0">
             <p class="row justify-content-center">Catalog is empty</p>

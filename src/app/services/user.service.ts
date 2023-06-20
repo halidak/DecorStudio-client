@@ -84,14 +84,13 @@ export class UserService {
     return this.http.put(`${this.url}/User/update-user/${id}`, dto);
   }
 
-  //todo
-  changePassword(id: string, dto: ChangePasswordDto){
-    return this.http.put(`${this.url}/User/change-password/${id}`, dto);
-  }
-
   deleteUser(id: string){
     return this.http.delete(`${this.url}/User/delete-user/${id}`);
   }
+
+  changePassword(id: string, pass: ChangePasswordDto){
+    return this.http.put(`${this.url}/User/change-password/${id}`, pass);
+  }  
 
 }
 
@@ -112,4 +111,8 @@ export interface UpdateDto{
   image: string;
 }
 
-export interface ChangePasswordDto {}
+export interface ChangePasswordDto {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

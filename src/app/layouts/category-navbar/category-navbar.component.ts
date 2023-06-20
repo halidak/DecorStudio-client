@@ -27,4 +27,8 @@ export class CategoryNavbarComponent implements OnInit{
   edit(){
     this.router.navigate([`edit/${this.user.id}`])
   }
+
+  change(){
+    this.router.navigate([`change-password`])
+  }
 }

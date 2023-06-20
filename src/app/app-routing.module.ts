@@ -13,12 +13,14 @@ import { RoleGuard } from './role.guard';
 import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-details.component';
 import { DecorDetailsComponent } from './pages/decor-details/decor-details.component';
 import { AddDecorComponent } from './forms/add-decor/add-decor.component';
+import { EditDecorComponent } from './forms/edit-decor/edit-decor.component';
+import { ChangePasswordComponent } from './forms/change-password/change-password.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
    { path: 'stores', component: StoresComponent},
    { path: 'store/:id', component:StoreDetailsComponent }, // canActivate: [AuthGuard] ako hocemo da zastitimo rutu
-   { path: 'catalog/:id', component: CatalogComponent },
+   { path: 'catalog/:storeId/:id', component: CatalogComponent },
    { path: 'login', component: LoginComponent },
    { path: 'register', component: RegisterComponent },
    { path: 'edit/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
@@ -26,7 +28,9 @@ const routes: Routes = [
    { path: 'warehouse/:id', component:WarehouseDetailsComponent, canActivate: [RoleGuard], data: {allowedRole: 1}},
    { path: 'decor/:id/:warehouseId', component:DecorDetailsComponent },
    { path: 'add-decor/:id', component:AddDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
-   { path: 'decor/:id', component: DecorDetailsComponent }
+   { path: 'decor/:id', component: DecorDetailsComponent },
+   { path: 'edit-decor/:id', component:EditDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
+   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

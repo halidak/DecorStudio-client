@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Add Decor in Catalog</h2>
+<mat-dialog-content>
+  <p *ngIf="decors.length === 0">Nema raspolozivih dekora za dodavanje</p>
+  <select *ngIf="decors.length != 0"  class="form-control bg-secondary-theme" id="decor">
+    <option *ngFor="let d of decors" [value]="d.id">{{d.name}}</option>
+  </select>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button *ngIf="decors.length != 0" mat-button color="primary" (click)="onConfirm()">Confirm</button>
+</mat-dialog-actions>

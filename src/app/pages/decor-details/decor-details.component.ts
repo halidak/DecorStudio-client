@@ -55,4 +55,8 @@ export class DecorDetailsComponent implements OnInit {
       console.log(err);
     })
   }
+
+  openEditForm(){
+    this.router.navigate(['edit-decor/' + this.id]);
+  }
 }

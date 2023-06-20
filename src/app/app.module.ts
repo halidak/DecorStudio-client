@@ -29,6 +29,14 @@ import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 import { WarehouseDetailsComponent } from './pages/warehouse-details/warehouse-details.component';
 import { DecorDetailsComponent } from './pages/decor-details/decor-details.component';
 import { AddDecorComponent } from './forms/add-decor/add-decor.component';
+import { DialogComponent } from './forms/dialog/dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { AddWarehouseDialogComponent } from './forms/add-warehouse-dialog/add-warehouse-dialog.component';
+import { EditDecorComponent } from './forms/edit-decor/edit-decor.component';
+import { ChangePasswordComponent } from './forms/change-password/change-password.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +56,10 @@ import { AddDecorComponent } from './forms/add-decor/add-decor.component';
     WarehouseDetailsComponent,
     DecorDetailsComponent,
     AddDecorComponent,
+    DialogComponent,
+    AddWarehouseDialogComponent,
+    EditDecorComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +76,9 @@ import { AddDecorComponent } from './forms/add-decor/add-decor.component';
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
