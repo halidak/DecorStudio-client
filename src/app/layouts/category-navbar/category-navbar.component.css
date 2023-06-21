@@ -8,6 +8,7 @@ nav{
 .nav-link{
     text-transform: uppercase;
     color: var(--primary-color);
+   
 }
 
 .nav-item{
@@ -18,6 +19,10 @@ nav{
     width: 40px; /* Prilagodite veličinu prema potrebi */
     height: 40px; /* Prilagodite veličinu prema potrebi */
     border-radius: 50%; /* Postavlja okrugli oblik */
+  }
+
+  .demo-section{
+    margin-left: 50px;
   }
   
 

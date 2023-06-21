@@ -1,11 +1,12 @@
 <div class="section">
-   <div class="small-container single-product">
+  <div class="small-container single-product">
     <div class="row">
-        <div class="col-2">
-            <img [src]=decor.image>
-        </div>
+      <div class="col-2">
+        <img [src]=decor.image>
+      </div>
     </div>
     <div class="col-2">
+      <div class="alert alert-success" *ngIf="success">Uspesno dodato</div>
         <p>Decor</p>
         <h1>{{decor.name}}</h1>
         <mat-chip  [ngStyle]="{ 'background-color': '#EA7250', 'color': '#ffffff' }">
@@ -15,11 +16,11 @@
         <br>
         <p>{{decor.description}}</p>
         <br>
-        <button *ngIf="userService.isCustomer()" class="btn btn-primary btn-block btn-theme">Rezervisi</button>
-        <button mat-fab color="warn"  (click)="openConfirmationDialog()" aria-label="Example icon button with a delete icon">
+        <button *ngIf="userService.isCustomer()" class="btn btn-primary btn-block btn-theme" (click)="add()">Rezervisi</button>
+        <button mat-fab color="warn"  (click)="openConfirmationDialog()" *ngIf="userService.isManager()" aria-label="Example icon button with a delete icon">
             <mat-icon>delete</mat-icon>
           </button>
-          <button class="edit" mat-fab color="primary" (click)="openEditForm()" aria-label="Example icon button with a edit icon">
+          <button class="edit" mat-fab color="primary" (click)="openEditForm()" *ngIf="userService.isManager()" aria-label="Example icon button with a edit icon">
             <mat-icon>edit</mat-icon>
           </button>
     </div>

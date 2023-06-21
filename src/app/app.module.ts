@@ -36,6 +36,14 @@ import { MatOptionModule } from '@angular/material/core';
 import { AddWarehouseDialogComponent } from './forms/add-warehouse-dialog/add-warehouse-dialog.component';
 import { EditDecorComponent } from './forms/edit-decor/edit-decor.component';
 import { ChangePasswordComponent } from './forms/change-password/change-password.component';
+import { AddCatalogDialogComponent } from './forms/add-catalog-dialog/add-catalog-dialog.component';
+import { AppointmentsComponent } from './pages/appointments/appointments.component';
+import {MatTableModule} from '@angular/material/table';
+import { AddAppDialogComponent } from './forms/add-app-dialog/add-app-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatBadgeModule} from '@angular/material/badge';
+import { ReservationPageComponent } from './pages/reservation-page/reservation-page.component';
 
 
 @NgModule({
@@ -60,6 +68,10 @@ import { ChangePasswordComponent } from './forms/change-password/change-password
     AddWarehouseDialogComponent,
     EditDecorComponent,
     ChangePasswordComponent,
+    AddCatalogDialogComponent,
+    AppointmentsComponent,
+    AddAppDialogComponent,
+    ReservationPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +91,10 @@ import { ChangePasswordComponent } from './forms/change-password/change-password
     MatInputModule,
     MatFormFieldModule,
     MatOptionModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

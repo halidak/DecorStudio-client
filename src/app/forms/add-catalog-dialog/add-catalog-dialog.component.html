@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Add Warehouse</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onConfirm()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" type="submit" [disabled]="!form.valid" (click)="onConfirm()">Confirm</button>
+</mat-dialog-actions>
+

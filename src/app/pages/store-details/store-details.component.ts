@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CatalogService } from 'src/app/services/catalog.service';
+import { AddCatalogDialogComponent } from 'src/app/forms/add-catalog-dialog/add-catalog-dialog.component';
+import { AddWarehouseDialogComponent } from 'src/app/forms/add-warehouse-dialog/add-warehouse-dialog.component';
+import { CatalogService, addCatalog } from 'src/app/services/catalog.service';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-store-details',
@@ -16,7 +20,10 @@ export class StoreDetailsComponent implements OnInit {
   constructor(private storeService: StoreService, 
     private router: ActivatedRoute, 
     private catalogService: CatalogService,
-    private route: Router) { }
+    private route: Router,
+    public userService: UserService,
+    private dialog: MatDialog,
+    private cataloService: CatalogService) { }
 
 
   ngOnInit(): void {
@@ -36,6 +43,29 @@ export class StoreDetailsComponent implements OnInit {
       err => {
           console.log(err);
         })
+    })
+  }
+
+  addCatalog(): void {
+    const dialogRef = this.dialog.open(AddCatalogDialogComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.add(result);
+        console.log('Dialog closed with result:', result);
+      }
+    });
+  }
+
+  add(cat: addCatalog){
+    this.cataloService.addCatalog(cat).subscribe(data => {
+      console.log(data)
+      this.ngOnInit();
+    },
+    err => {
+      console.log(err)
     })
   }
 

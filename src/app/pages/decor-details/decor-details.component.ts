@@ -16,6 +16,7 @@ export class DecorDetailsComponent implements OnInit {
   id: number = 0;
   decor: any = [];
   warehouseId: number = 0;
+  success = false;
   constructor(private decorService: DecorService, private route: ActivatedRoute, public userService: UserService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
@@ -58,5 +59,10 @@ export class DecorDetailsComponent implements OnInit {
 
   openEditForm(){
     this.router.navigate(['edit-decor/' + this.id]);
+  }
+
+  add(){
+    this.decorService.addToCart(this.decor);
+    this.success = true;
   }
 }

@@ -1,0 +1,36 @@
+<!-- <p>Broj stavki u korpi: {{ decorService.decoreItems$ | async | length }}</p> -->
+<section>
+    <div class="col-md-12 text-center">
+        <br>
+        <h1 class="text-theme-primary">Vasa korpa</h1>
+      </div>
+      <div class="alert alert-danger" *ngIf="error">Doslo je do greske</div>
+      <div class="alert alert-success" *ngIf="success">Uspesno rezervisano</div>
+        <!-- <button mat-raised-button color="warn" (click)="clearCart()">Očisti Korpu</button> -->
+        <select *ngIf="appointments.length != 0"  class="form-control bg-secondary-theme narrow-select" id="date">
+            <option *ngFor="let d of appointments" [value]="d.id">{{d.dateTime |  date:'dd-MM-yyyy'}}</option>
+          </select>
+          <div class="row justify-content-center">
+              <div *ngIf="cartItems.length == 0">
+            <p class="row justify-content-center">Lista zeljenih rezervacija je prazna</p>
+        </div>
+        <div class="col-lg-3" *ngFor="let s of cartItems">
+                <div>
+                    <br>
+                <mat-card >
+                    <mat-card-header>
+                        <mat-card-title>{{s.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img [src]="'' + s.image" alt="Slika">
+                    <br>
+                    <mat-card-content>
+                        <p>Cena: {{s.price}} <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="euro" class="icon"></mat-icon>
+                        </mat-card-content>
+                    </mat-card>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block btn-theme narrow-button" (click)="rezervisi()">Rezervisi</button>
+</section>

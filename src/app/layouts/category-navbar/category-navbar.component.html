@@ -14,6 +14,12 @@
                 <li class="nav-item mr-5" *ngIf="userService.isManager()">
                     <a routerLink="/warehouses" class="nav-link">Warehouses</a>
                 </li>
+                <div class="demo-section" *ngIf="userService.isCustomer()">
+                    <button mat-raised-button color="primary" (click)="openDialog()"
+                        matBadge="{{num}}" matBadgePosition="before" matBadgeColor="accent">
+                      Rezervacije
+                    </button>
+                  </div>
             </ul>
         </div>
         <mat-icon *ngIf="!userService.hasImage() && userService.isLogedIn()" aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
@@ -24,6 +30,7 @@
             <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="edit()">Edit Profile</button>
             <button mat-menu-item (click)="change()">Change Password</button>
+            <button mat-menu-item (click)="appointments()" *ngIf="userService.isEmployee()">Your appointments</button>
             <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
     </div>

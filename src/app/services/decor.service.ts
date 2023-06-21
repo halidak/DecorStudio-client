@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { env } from 'src/app/env';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { env } from 'src/app/env';
 export class DecorService {
 
   url = env.url;
+  private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.getCartLength());
   constructor(private http: HttpClient) { }
 
   getDecorByCatalogId(id: number) {
@@ -41,6 +43,38 @@ export class DecorService {
   updateDecor(decor: SaveDecor, id: number){
     return this.http.put(this.url + `/Decor/update-decor/${id}`, decor);
   }
+  getCart(): any[] {
+    const cartItems = localStorage.getItem('cartItems');
+    return cartItems ? JSON.parse(cartItems) : [];
+  }
+
+  addToCart(decor: any) {
+    const cartItems = this.getCart();
+    const existingItem = cartItems.find(item => item.id === decor.id);
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      decor.quantity = 1;
+      cartItems.push(decor);
+    }
+
+    // Ažuriranje korpe u localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }
+
+  getCartLength(): number {
+    const cartItems = this.getCart();
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  }
+
+ 
+
+  getCartLengthObservable(): Observable<number> {
+    return this.cartLengthSubject.asObservable();
+  }
+  
+  
 }
 
 export interface SaveDecor{

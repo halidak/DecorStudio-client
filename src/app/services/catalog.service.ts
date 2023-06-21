@@ -18,4 +18,13 @@ export class CatalogService {
   getCatalogById(id: number) {
     return this.http.get(this.url + '/Catalog/get-catalog-by-id/' + id);
   }
+
+  addCatalog(dto: addCatalog) {
+    return this.http.post(this.url + '/Catalog/add-catalog', dto);
+  }
+}
+
+export interface addCatalog{
+  name: string;
+  storeId: number;
 }

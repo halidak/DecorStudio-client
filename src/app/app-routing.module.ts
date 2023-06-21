@@ -15,6 +15,8 @@ import { DecorDetailsComponent } from './pages/decor-details/decor-details.compo
 import { AddDecorComponent } from './forms/add-decor/add-decor.component';
 import { EditDecorComponent } from './forms/edit-decor/edit-decor.component';
 import { ChangePasswordComponent } from './forms/change-password/change-password.component';
+import { AppointmentsComponent } from './pages/appointments/appointments.component';
+import { ReservationPageComponent } from './pages/reservation-page/reservation-page.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -30,7 +32,9 @@ const routes: Routes = [
    { path: 'add-decor/:id', component:AddDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
    { path: 'decor/:id', component: DecorDetailsComponent },
    { path: 'edit-decor/:id', component:EditDecorComponent, canActivate: [RoleGuard], data: {allowedRole: 1} },
-   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]}
+   { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
+   { path: 'appointments', component: AppointmentsComponent, canActivate: [RoleGuard], data: {allowedRole: 2}},
+   { path: 'reservation', component: ReservationPageComponent , canActivate: [RoleGuard], data: {allowedRole: 3}}
 ];
 
 @NgModule({

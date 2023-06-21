@@ -10,6 +10,9 @@
     <br>
     <h1 class="text-center">Naši katalozi</h1>
     <div class="row justify-content-center">
+        <button mat-mini-fab color="primary" *ngIf="userService.isManager()" (click)="addCatalog()" aria-label="Example icon button with a plus one icon">
+            <mat-icon>plus_one</mat-icon>
+          </button>
             <div class="col-lg-3" *ngFor="let s of catalogs">
                 <div (click)="openCatalogDetails(s.id)">
                 <mat-card >
