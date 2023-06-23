@@ -15,10 +15,15 @@
             <p class="row justify-content-center">Lista zeljenih rezervacija je prazna</p>
         </div>
         <div class="col-lg-3" *ngFor="let s of cartItems">
-                <div>
-                    <br>
+            <div>
+                <br>
                 <mat-card >
                     <mat-card-header>
+                        <div class="example-button-container">
+                        <button (click)="remove(s.id)" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
                         <mat-card-title>{{s.name}}</mat-card-title>
                     </mat-card-header>
                     <img [src]="'' + s.image" alt="Slika">

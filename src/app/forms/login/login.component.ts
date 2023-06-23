@@ -37,6 +37,7 @@ export class LoginComponent {
         console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
+        this.userService.setCurrentUser(response.user);
         this.router.navigate(['']);
       }
     },

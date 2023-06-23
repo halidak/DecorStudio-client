@@ -15,4 +15,8 @@ section{
     align-items: center; /* Centriranje vertikalno */
   }
   
+
+  .example-button-container{
+    margin-left: 120px;
+  }
   

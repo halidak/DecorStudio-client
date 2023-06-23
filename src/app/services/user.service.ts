@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { env } from 'src/app/env';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { env } from 'src/app/env';
 export class UserService {
 
   url = env.url;
+  private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +20,14 @@ export class UserService {
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+  }
+
+  setCurrentUser(user: any) {
+    this.currentUserSubject.next(user);
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.currentUserSubject.asObservable();
   }
 
   isLogedIn(){

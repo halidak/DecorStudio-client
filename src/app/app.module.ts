@@ -44,6 +44,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ReservationPageComponent } from './pages/reservation-page/reservation-page.component';
+import { ListOfReservationsComponent } from './pages/list-of-reservations/list-of-reservations.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { ReservationPageComponent } from './pages/reservation-page/reservation-p
     AppointmentsComponent,
     AddAppDialogComponent,
     ReservationPageComponent,
+    ListOfReservationsComponent,
   ],
   imports: [
     BrowserModule,

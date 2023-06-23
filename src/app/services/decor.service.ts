@@ -7,9 +7,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DecorService {
-
+  
   url = env.url;
   private cartLengthSubject: BehaviorSubject<number> = new BehaviorSubject<number>(this.getCartLength());
+  
   constructor(private http: HttpClient) { }
 
   getDecorByCatalogId(id: number) {
@@ -61,19 +62,52 @@ export class DecorService {
 
     // Ažuriranje korpe u localStorage
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    this.updateCartCount();
   }
 
+  private updateCartCount() {
+    const cartItems = this.getCart();
+    const count = cartItems.reduce((total, item) => total + item.quantity, 0);
+    this.cartLengthSubject.next(count);
+  }
+
+  removeFromCart(decorId: any) {
+    const cartItems = this.getCart();
+    const updatedCartItems = cartItems.filter(item => item.id !== decorId);
+  
+    // Ažuriranje korpe u localStorage
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    this.updateCartCount();
+  }
+
+
+  updateCartLength(): void {
+    const cartItems = this.getCart();
+    const cartLength = cartItems.reduce((total, item) => total + item.quantity, 0);
+    this.cartLengthSubject.next(cartLength);
+  }
+
+  // Getter za broj stavki u korpi
   getCartLength(): number {
     const cartItems = this.getCart();
     return cartItems.reduce((total, item) => total + item.quantity, 0);
   }
 
- 
-
   getCartLengthObservable(): Observable<number> {
     return this.cartLengthSubject.asObservable();
   }
-  
+
+  getUserReservation(id: string){
+    return this.http.get(this.url + `/Decor/user-reservation/${id}`);
+  }
+
+  getReservationOfEmployee(id: string){
+    return this.http.get(this.url + `/Decor/user-working/${id}`);
+  }
+
+  getReservationsFromStore(id: number){
+    return this.http.get(this.url + `/Decor/decores-res/${id}`);
+  }
   
 }
 

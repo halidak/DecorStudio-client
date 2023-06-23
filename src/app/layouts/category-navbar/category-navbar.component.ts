@@ -22,12 +22,14 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
     if (userJSON) {
       this.user = JSON.parse(userJSON);
     }
-    this.decorService.getCartLengthObservable().subscribe((cartLength) => {
-      this.num = cartLength;
-      this.cdr.detectChanges();
-    });
+    this.cartItemsSubscription = this.decorService
+      .getCartLengthObservable()
+      .subscribe((cartLength) => {
+        this.num = cartLength;
+        this.cdr.detectChanges();
+      });
   }
-
+  
   ngOnDestroy(): void {
     this.cartItemsSubscription.unsubscribe();
   }
@@ -56,5 +58,9 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
   addToCart(decor: any) {
     this.decorService.addToCart(decor); // Dodajte ovaj poziv kako biste ažurirali korpu
     this.cdr.detectChanges();
+  }
+
+  reservationList(){
+    this.router.navigate(['reservation-list']);
   }
 }

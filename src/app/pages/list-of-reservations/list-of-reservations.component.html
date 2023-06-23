@@ -1,0 +1,72 @@
+<section *ngIf="userService.isCustomer() || userService.isEmployee()">
+    <div class="col-md-12 text-center">
+        <br>
+        <h1 class="text-theme-primary">Your reservations</h1>
+      </div>
+      <br>
+      <div class="tabela-container">
+          <table mat-table [dataSource]="decors">
+              
+              <ng-container matColumnDef="naziv">
+                  <th mat-header-cell *matHeaderCellDef>Naziv</th>
+                  <td mat-cell *matCellDef="let decor">{{ decor.name }}</td>
+      </ng-container>
+    <ng-container matColumnDef="cena">
+        <th mat-header-cell *matHeaderCellDef>Cena</th>
+        <td mat-cell *matCellDef="let decor">{{ decor.price}}</td>
+    </ng-container>
+    <ng-container matColumnDef="tip">
+        <th mat-header-cell *matHeaderCellDef>Tip</th>
+        <td mat-cell *matCellDef="let decor">{{ decor.type}}</td>
+    </ng-container>
+    <ng-container matColumnDef="slika">
+        <th mat-header-cell *matHeaderCellDef>Slika</th>
+        <td mat-cell *matCellDef="let decor"><img class="img" [src]='decor.image'></td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+</section>
+<section *ngIf="userService.isManager()">
+    <div class="col-md-12 text-center">
+        <br>
+        <h1 class="text-theme-primary">Your reservations</h1>
+      </div>
+      <br>
+      <div class="tabela-container">
+          <table mat-table [dataSource]="decors">
+              
+              <ng-container matColumnDef="naziv">
+                  <th mat-header-cell *matHeaderCellDef>Naziv</th>
+                  <td mat-cell *matCellDef="let decor">{{ decor.decor.name }}</td>
+      </ng-container>
+    <ng-container matColumnDef="cena">
+        <th mat-header-cell *matHeaderCellDef>Cena</th>
+        <td mat-cell *matCellDef="let decor">{{ decor.decor.price}}</td>
+    </ng-container>
+    <ng-container matColumnDef="tip">
+        <th mat-header-cell *matHeaderCellDef>Tip</th>
+        <td mat-cell *matCellDef="let decor">{{ decor.decor.type}}</td>
+    </ng-container>
+    <ng-container matColumnDef="slika">
+        <th mat-header-cell *matHeaderCellDef>Slika</th>
+        <td mat-cell *matCellDef="let decor"><img class="img" [src]='decor.decor.image'></td>
+    </ng-container>
+
+    <ng-container matColumnDef="termin">
+        <th mat-header-cell *matHeaderCellDef>Termin</th>
+        <td mat-cell *matCellDef="let decor">
+          <ng-container *ngFor="let appointment of appointments">
+            {{ appointment.dateTime | date: 'dd-MM-yyyy' }}
+          </ng-container>
+        </td>
+      </ng-container>
+      
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+</div>
+</section>

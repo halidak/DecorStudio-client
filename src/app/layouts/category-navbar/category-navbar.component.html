@@ -24,14 +24,17 @@
         </div>
         <mat-icon *ngIf="!userService.hasImage() && userService.isLogedIn()" aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
         
+          
         <img *ngIf="userService.hasImage()" class="profile-image" [src]="user.image" alt="">
         
         <button *ngIf="userService.isLogedIn()" mat-button [matMenuTriggerFor]="menu">{{user.firstName}} {{user.lastName}}</button>
-            <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="edit()">Edit Profile</button>
             <button mat-menu-item (click)="change()">Change Password</button>
             <button mat-menu-item (click)="appointments()" *ngIf="userService.isEmployee()">Your appointments</button>
+            <button mat-menu-item (click)="reservationList()" *ngIf="userService.isCustomer() || userService.isEmployee()">Your reservations</button>
+            <button mat-menu-item (click)="reservationList()" *ngIf="userService.isManager()">Store reservations</button>
             <button mat-menu-item (click)="logout()">Logout</button>
-            </mat-menu>
+        </mat-menu>
     </div>
 </nav>
