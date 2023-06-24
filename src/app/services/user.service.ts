@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { env } from 'src/app/env';
@@ -102,6 +102,29 @@ export class UserService {
     return this.http.put(`${this.url}/User/change-password/${id}`, pass);
   }  
 
+  verify(email: string, token: string){
+    return this.http.get(`${this.url}/User/verify?userId=${email}&token=${token}`);
+  }
+
+  requestPasswordReset(email: emailDto) {
+  
+    return this.http.post(`${this.url}/User/request-password-reset`, email);
+  }
+
+  resetPassword(dto: resetDto){
+    return this.http.post(`${this.url}/User/reset-password`, dto);
+  }
+  
+}
+
+export interface emailDto{
+  email: string;
+}
+
+export interface resetDto{
+  userName: string;
+  token: string;
+  password: string;
 }
 
 export interface RegisterDto{
@@ -111,7 +134,7 @@ export interface RegisterDto{
   roleId: number;
   phoneNumber: string;
   password: string;
-  storeId: number;
+  storeId: number ;
 }
 
 export interface UpdateDto{

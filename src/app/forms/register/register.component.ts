@@ -78,26 +78,35 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    register(){
-      if(this.registerForm.valid){
+    register() {
+      if (this.registerForm.valid) {
+        const workplaceElement = document.getElementById('workplace') as HTMLInputElement;
+        const workplaceValue = workplaceElement ? +(workplaceElement.value) : 0;
+    
         const dto: RegisterDto = {
           firstName: this.FirstName?.value ?? '',
           lastName: this.LastName?.value ?? '',
           userName: this.Email?.value ?? '',
           phoneNumber: this.PhoneNumber?.value ?? '',
           password: this.Password?.value ?? '',
-          storeId: +(document.getElementById('workplace') as HTMLInputElement).value,
+          storeId: workplaceValue,
           roleId: +(document.getElementById('role') as HTMLInputElement).value
-        }
-        this.userService.register(dto).subscribe((data: any) => {
-          console.log('User registered successfully:', data);
-          this.router.navigate(['/login']);
-        },
-        (error: any) => {
-          console.error('Error registering user:', error);
-          this.error = true;
-        })
+        };
+    
+        console.log(dto.storeId);
+    
+        this.userService.register(dto).subscribe(
+          (data: any) => {
+            console.log('User registered successfully:', data);
+            this.router.navigate(['/login']);
+          },
+          (error: any) => {
+            console.error('Error registering user:', error);
+            this.error = true;
+          }
+        );
       }
     }
+    
 
 }

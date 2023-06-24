@@ -45,6 +45,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ReservationPageComponent } from './pages/reservation-page/reservation-page.component';
 import { ListOfReservationsComponent } from './pages/list-of-reservations/list-of-reservations.component';
+import { VerifyComponent } from './pages/verify/verify.component';
+import { ResetPEmailComponent } from './forms/reset-p-email/reset-p-email.component';
+import { NewPasswordComponent } from './forms/new-password/new-password.component';
 
 
 @NgModule({
@@ -74,6 +77,9 @@ import { ListOfReservationsComponent } from './pages/list-of-reservations/list-o
     AddAppDialogComponent,
     ReservationPageComponent,
     ListOfReservationsComponent,
+    VerifyComponent,
+    ResetPEmailComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,

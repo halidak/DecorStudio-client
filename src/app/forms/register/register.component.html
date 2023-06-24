@@ -91,7 +91,7 @@
                         <br>
                         <div class="form-group" *ngIf="storesLoaded && showSelect">
                             <label for="password">Workplace</label>
-                            <select class="form-control bg-secondary-theme" id="workplace" formControlName="workplace">
+                            <select class="form-control bg-secondary-theme" id="workplace" formControlName="storeId">
                                 <option *ngFor="let s of stores" [value]="s.id">{{s.name}}</option>
                             </select>
                         </div>

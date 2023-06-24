@@ -18,6 +18,9 @@ import { ChangePasswordComponent } from './forms/change-password/change-password
 import { AppointmentsComponent } from './pages/appointments/appointments.component';
 import { ReservationPageComponent } from './pages/reservation-page/reservation-page.component';
 import { ListOfReservationsComponent } from './pages/list-of-reservations/list-of-reservations.component';
+import { VerifyComponent } from './pages/verify/verify.component';
+import { ResetPEmailComponent } from './forms/reset-p-email/reset-p-email.component';
+import { NewPasswordComponent } from './forms/new-password/new-password.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -36,7 +39,10 @@ const routes: Routes = [
    { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
    { path: 'appointments', component: AppointmentsComponent, canActivate: [RoleGuard], data: {allowedRole: 2}},
    { path: 'reservation', component: ReservationPageComponent , canActivate: [RoleGuard], data: {allowedRole: 3}},
-   { path: 'reservation-list', component: ListOfReservationsComponent, canActivate: [AuthGuard]}
+   { path: 'reservation-list', component: ListOfReservationsComponent, canActivate: [AuthGuard]},
+   { path: 'verify/:email/:token', component: VerifyComponent},
+   { path: 'password', component: ResetPEmailComponent},
+   { path: 'new-password/:email/:token', component: NewPasswordComponent}
 ];
 
 @NgModule({
