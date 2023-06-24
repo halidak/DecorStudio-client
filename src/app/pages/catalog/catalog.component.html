@@ -6,11 +6,12 @@
 <div class="container">
     <br>
     <h1 class="text-center">Dostupni dekori</h1>
-    <mat-chip-listbox aria-label="Fish selection">
-        <mat-chip-option>Dekoracija vencanja</mat-chip-option>
-        <mat-chip-option>Dekoracija prostorija</mat-chip-option>
-        <mat-chip-option color="accent">Dekoracija slavlja</mat-chip-option>
-        <mat-chip-option color="warn">Dekoracija automobila</mat-chip-option>
+    <mat-chip-listbox aria-label="Fish selection" [(ngModel)]="selectedDecorations">
+        <mat-chip-option value="Wedding" (click)="sendRequest()">Wedding</mat-chip-option>
+        <mat-chip-option value="Engagement" (click)="sendRequest()">Engagement</mat-chip-option>
+        <mat-chip-option value="Birthday" (click)="sendRequest()" color="accent">Birthday</mat-chip-option>
+        <mat-chip-option value="Cars" (click)="sendRequest()" color="warn">Cars</mat-chip-option>
+        <mat-chip-option value="House" (click)="sendRequest()" color="warn">House</mat-chip-option>
       </mat-chip-listbox>
       <br>
       <button mat-mini-fab color="primary" *ngIf="userService.isManager()" (click)="openDialog()" aria-label="Example icon button with a plus one icon">

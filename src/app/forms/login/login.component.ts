@@ -38,7 +38,12 @@ export class LoginComponent {
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.userService.setCurrentUser(response.user);
-        this.router.navigate(['']);
+        if(response.user.roleId === 4){
+          this.router.navigate(['admin']);
+        }
+        else{
+          this.router.navigate(['']);
+        }
       }
     },
     (err) => {

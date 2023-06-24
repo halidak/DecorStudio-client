@@ -48,6 +48,8 @@ import { ListOfReservationsComponent } from './pages/list-of-reservations/list-o
 import { VerifyComponent } from './pages/verify/verify.component';
 import { ResetPEmailComponent } from './forms/reset-p-email/reset-p-email.component';
 import { NewPasswordComponent } from './forms/new-password/new-password.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AddStoreComponent } from './forms/add-store/add-store.component';
 
 
 @NgModule({
@@ -80,6 +82,8 @@ import { NewPasswordComponent } from './forms/new-password/new-password.componen
     VerifyComponent,
     ResetPEmailComponent,
     NewPasswordComponent,
+    AdminComponent,
+    AddStoreComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,8 @@ export class CatalogComponent implements OnInit{
   catalog: any = {};
   user: any = [];
   storeId: number = 0;
+  selectedDecorations: string = '';
+
   constructor(private decorService: DecorService, 
     private route: ActivatedRoute,
     private catalogService: CatalogService,
@@ -83,6 +85,13 @@ export class CatalogComponent implements OnInit{
       console.log(err)
     }
     )
+  }
+
+  sendRequest(){
+    console.log(this.selectedDecorations);
+    this.decorService.getDecorByCatalogIdFiltered(this.id, this.selectedDecorations).subscribe(res => {
+      this.decors = res as any;
+    })
   }
 
 }
