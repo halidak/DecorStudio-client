@@ -17,17 +17,21 @@ export class DecorDetailsComponent implements OnInit {
   decor: any = [];
   warehouseId: number = 0;
   success = false;
+  loading = false;
   constructor(private decorService: DecorService, private route: ActivatedRoute, public userService: UserService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get('id') ?? 0);
       this.decorService.getDecor(this.id).subscribe((res: any) => {
         this.decor = res;
         console.log(this.decor)
+        this.loading = false;
       },
       err => {
         console.log(err)
+        this.loading = false;
       })
     })
 

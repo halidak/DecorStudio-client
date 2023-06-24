@@ -1,12 +1,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card p-5 shadow-effect bg-secondary-theme">
+            <div class="card p-5 shadow-effect bg-secondary-theme ">
+                <div class="row justify-content-center ml-5">
+                    <mat-spinner *ngIf="loading"></mat-spinner>
+                </div>
                 <div class="card-body">
                     <div class="text-center">
                         <h2 class="text-theme-primary">Login</h2>
                         <p>Please enter your informations to log in</p>
                         <div *ngIf="error" class="alert alert-danger">Email and password do not match!</div>
+                        <div *ngIf="success" class="alert alert-success">Email has been send</div>
+                        <div *ngIf="success2" class="alert alert-success">You have successfully reset your password </div>
                     </div>
                     <form [formGroup]="form">
                         <div class="form-group">

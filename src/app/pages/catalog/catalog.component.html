@@ -14,6 +14,9 @@
         <mat-chip-option value="House" (click)="sendRequest()" color="warn">House</mat-chip-option>
       </mat-chip-listbox>
       <br>
+      <div class="row justify-content-center ml-5">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
       <button mat-mini-fab color="primary" *ngIf="userService.isManager()" (click)="openDialog()" aria-label="Example icon button with a plus one icon">
           <mat-icon>plus_one</mat-icon>
         </button>

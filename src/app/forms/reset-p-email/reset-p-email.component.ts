@@ -13,6 +13,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class ResetPEmailComponent implements OnInit{
   error: boolean = false;
   stores: any[] =[];
+  loading = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -35,14 +36,16 @@ export class ResetPEmailComponent implements OnInit{
       const email: emailDto = {
         email: this.Email?.value ?? '',
       }
-    
+      this.loading = true;
       this.userService.requestPasswordReset(email).subscribe(
         data => {
           console.log(data);
-          this.router.navigate(['login']);
+          this.router.navigate(['login'] , { queryParams: { success: 'true' } });
+          this.loading = false;
         },
         err => {
           console.log(err);
+          this.loading = false; 
         }
       );
     }

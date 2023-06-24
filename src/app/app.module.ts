@@ -50,7 +50,7 @@ import { ResetPEmailComponent } from './forms/reset-p-email/reset-p-email.compon
 import { NewPasswordComponent } from './forms/new-password/new-password.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AddStoreComponent } from './forms/add-store/add-store.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -106,7 +106,8 @@ import { AddStoreComponent } from './forms/add-store/add-store.component';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

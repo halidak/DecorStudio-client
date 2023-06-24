@@ -6,6 +6,9 @@
       </div>
     </div>
     <div class="col-2">
+      <div class="row justify-content-center ml-5">
+        <mat-spinner *ngIf="loading"></mat-spinner>
+    </div>
       <div class="alert alert-success" *ngIf="success">Uspesno dodato</div>
         <p>Decor</p>
         <h1>{{decor.name}}</h1>

@@ -20,6 +20,7 @@ export class CatalogComponent implements OnInit{
   user: any = [];
   storeId: number = 0;
   selectedDecorations: string = '';
+  loading = false;
 
   constructor(private decorService: DecorService, 
     private route: ActivatedRoute,
@@ -29,14 +30,17 @@ export class CatalogComponent implements OnInit{
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.paramMap.subscribe(param => {
       this.id = Number(param.get('id') ?? 0);
       this.decorService.getDecorByCatalogId(this.id).subscribe((res: any) => {
         this.decors = res;
         console.log(this.decors)
+        this.loading = false;
       },
       err => {
         console.log(err)
+        this.loading = false;
       })
       this.catalogService.getCatalogById(this.id).subscribe((res: any) => {
         this.catalog = res;

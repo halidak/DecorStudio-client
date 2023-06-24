@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   selectedVaue: string = "";
   storesLoaded = false;
   stores: any[] =[];
+  loading = false;
 
   constructor(private userService: UserService, private router: Router, private storeService: StoreService) { }
 
@@ -94,17 +95,18 @@ export class RegisterComponent implements OnInit {
         };
     
         console.log(dto.storeId);
-    
+        this.loading = true;
         this.userService.register(dto).subscribe(
           (data: any) => {
             console.log('User registered successfully:', data);
-            this.router.navigate(['/login']);
+            this.router.navigate(['/login'] , { queryParams: { success: 'true' } });
+            this.loading = false;
           },
           (error: any) => {
             console.error('Error registering user:', error);
             this.error = true;
           }
-        );
+          );
       }
     }
     

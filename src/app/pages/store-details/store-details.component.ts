@@ -17,6 +17,7 @@ export class StoreDetailsComponent implements OnInit {
   store: any = {}
   id: number = 0;
   catalogs: any[] = []
+  loading = false;
   constructor(private storeService: StoreService, 
     private router: ActivatedRoute, 
     private catalogService: CatalogService,
@@ -27,14 +28,17 @@ export class StoreDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.loading = true;
     this.router.paramMap.subscribe(params => {
       this.id = Number(params.get('id') ?? 0);
       this.storeService.getStoreById(this.id).subscribe(data => {
         this.store = data;
         console.log(this.store)
+        this.loading = false;
       },
         err => {
           console.log(err)
+          this.loading = false;
           })
       this.catalogService.getCatalogsByStoreId(this.id).subscribe((res: any) => {
         this.catalogs = res;

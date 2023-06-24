@@ -14,6 +14,7 @@ export class NewPasswordComponent {
   stores: any[] =[];
   email: string = '';
   token: string = '';
+  loading = false;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
@@ -45,14 +46,16 @@ export class NewPasswordComponent {
       token: this.token,
       password: this.Password?.value ?? '',
     }
-
+    this.loading = true;
     this.userService.resetPassword(dto).subscribe(data => {
       console.log(data);
-      this.router.navigate(['login']);
+      this.router.navigate(['login'],{ queryParams: { success2: 'true' } });
+      this.loading = false;
     },
     err => {
       console.log(err);
       this.error = true;
+      this.loading = false;
       }
     );
    }
