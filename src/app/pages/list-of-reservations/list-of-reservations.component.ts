@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DecorService } from 'src/app/services/decor.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 import { UserService } from 'src/app/services/user.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-of-reservations',
@@ -13,24 +15,35 @@ export class ListOfReservationsComponent implements OnInit{
   user: any = [];
   decors: any[] = [];
   appointments: any;
-
+  
   displayedColumns2: string[] = ['naziv', 'cena', 'tip', 'slika', 'termin'];
 
-  constructor(private decorService: DecorService, public userService: UserService) {}
+  displayedColumns3: string[] = ['naziv', 'cena', 'tip', 'slika', 'termin', 'dugme'];
+
+  constructor(private decorService: DecorService, public userService: UserService, private reservationService: ReservationService) {}
   ngOnInit(): void {
     const userJSON = localStorage.getItem('user');
     if (userJSON) {
       this.user = JSON.parse(userJSON);
     }
-    if(this.userService.isCustomer()){
-      this.decorService.getUserReservation(this.user.id).subscribe((res: any) => {
-        this.decors = res;
-        console.log(this.decors)
+    if (this.userService.isCustomer()) {
+      this.reservationService.getReservations(this.user.id).subscribe((res: any) => {
+        this.decors = res.flatMap((reservation: any) => {
+          return reservation.decor_Reservations.map((decorReservation: any) => {
+            return {
+              decor: decorReservation.decor,
+              appointments: reservation.appointments,
+              res: decorReservation
+            };
+          });
+        });
+        console.log(this.decors);
       },
       err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
     }
+    
     else if(this.userService.isEmployee()){
       this.decorService.getReservationOfEmployee(this.user.id).subscribe((res: any) => {
         this.decors = res;
@@ -61,5 +74,12 @@ export class ListOfReservationsComponent implements OnInit{
         console.log(err)
       })
     }
+  }
+
+  handleButtonClick(id: number) {
+    this.reservationService.cancelReservation(id).subscribe(data => {
+      console.log(data);
+      this.ngOnInit();
+    })
   }
 }

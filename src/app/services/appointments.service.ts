@@ -18,8 +18,8 @@ export class AppointmentsService {
     return this.http.post(`${this.url}/Appointment/add-app`, app);
   }
 
-  getApp(){
-    return this.http.get(`${this.url}/Appointment/get-all-distinct`);
+  getApp(id: number){
+    return this.http.get(`${this.url}/Appointment/get-all-distinct?number=${id}`);
   }
 }
 

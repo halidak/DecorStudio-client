@@ -13,6 +13,14 @@ export class ReservationService {
   makeReservation(dto: makeReservation){
     return this.http.post(`${this.url}/Reservation/make-reservation`, dto);
   }
+
+  getReservations(id: string){
+    return this.http.get(`${this.url}/Reservation/user-reservation/${id}`);
+  }
+
+  cancelReservation(id: number){
+    return this.http.delete(`${this.url}/Reservation/cancel-reservation/${id}`);
+  }
 }
 
 export interface makeReservation{

@@ -15,6 +15,7 @@ export class ReservationPageComponent implements OnInit {
   user: any = [];
   success = false;
   error = false;
+  number: number = 0;
 
   constructor(
     public decorService: DecorService,
@@ -24,6 +25,8 @@ export class ReservationPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.number = this.decorService.getCartLength();
+    console.log(this.number);
     const userJSON = localStorage.getItem('user');
     if (userJSON) {
       this.user = JSON.parse(userJSON);
@@ -31,7 +34,7 @@ export class ReservationPageComponent implements OnInit {
     this.cartItems = this.decorService.getCart();
     console.log(this.cartItems);
 
-    this.appService.getApp().subscribe((appointments: any) => {
+    this.appService.getApp(this.number).subscribe((appointments: any) => {
       this.appointments = appointments;
       console.log(this.appointments);
     });
@@ -66,5 +69,11 @@ export class ReservationPageComponent implements OnInit {
   remove(id: number) {
     this.decorService.removeFromCart(id);
     this.cartItems = this.decorService.getCart();
+    this.number = this.decorService.getCartLength();
+    console.log(this.number);
+    this.appService.getApp(this.number).subscribe((appointments: any) => {
+      this.appointments = appointments;
+      console.log(this.appointments);
+    });
   }
 }
