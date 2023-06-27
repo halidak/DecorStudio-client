@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { DecorService } from 'src/app/services/decor.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,14 +13,23 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
 
   user: any = [];
   private cartItemsSubscription!: Subscription;
+  public currentUserSubscription!: Subscription; // Promenjeno private u public
+  private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   public num = 0;
-  constructor(public userService: UserService, private router: Router, public decorService: DecorService,  private cdr: ChangeDetectorRef) { }
+  constructor(
+    public userService: UserService,
+    private router: Router,
+    public decorService: DecorService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     const userJSON = localStorage.getItem('user');
     if (userJSON) {
       this.user = JSON.parse(userJSON);
+      this.userService.setCurrentUser(this.user);
+      this.currentUserSubject.next(this.user);
     }
     this.cartItemsSubscription = this.decorService
       .getCartLengthObservable()
@@ -28,27 +37,46 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
         this.num = cartLength;
         this.cdr.detectChanges();
       });
+
+    this.currentUserSubscription = this.userService
+      .getCurrentUser()
+      .subscribe((user) => {
+        this.user = user;
+        this.cdr.detectChanges();
+      });
+
+    this.currentUserSubscription = this.userService
+      .getCurrentUser()
+      .subscribe((user) => {
+        this.user = user;
+        this.currentUserSubject.next(user);
+        this.cdr.detectChanges();
+      });
+
   }
-  
+
   ngOnDestroy(): void {
     this.cartItemsSubscription.unsubscribe();
+    this.currentUserSubscription.unsubscribe();
   }
 
   logout() {
     this.userService.logout();
+    this.currentUserSubject.next(null);
     this.router.navigate(['']);
+    this.num = 0;
   }
 
   edit() {
-    this.router.navigate([`edit/${this.user.id}`])
+    this.router.navigate([`edit/${this.user.id}`]);
   }
 
   change() {
-    this.router.navigate([`change-password`])
+    this.router.navigate([`change-password`]);
   }
 
   appointments() {
-    this.router.navigate([`appointments`])
+    this.router.navigate([`appointments`]);
   }
 
   openDialog() {
@@ -56,11 +84,11 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
   }
 
   addToCart(decor: any) {
-    this.decorService.addToCart(decor); // Dodajte ovaj poziv kako biste ažurirali korpu
+    this.decorService.addToCart(decor);
     this.cdr.detectChanges();
   }
 
-  reservationList(){
+  reservationList() {
     this.router.navigate(['reservation-list']);
   }
 }

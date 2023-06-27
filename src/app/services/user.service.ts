@@ -10,6 +10,7 @@ export class UserService {
 
   url = env.url;
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  private _isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -17,9 +18,23 @@ export class UserService {
     return this.http.post(`${this.url}/User/login`, credentioalns);
   }
 
+  login_user(log: any){
+    const isLoggedIn = log && log.token;
+    if(isLoggedIn){
+      this._isLoggedIn.next(true);
+    } else {
+      this._isLoggedIn.next(false);
+    }
+  }
+
+  get isLoggedIn(): Observable<boolean> {
+    return this._isLoggedIn.asObservable();
+  }
+
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('cartItems');
   }
 
   setCurrentUser(user: any) {

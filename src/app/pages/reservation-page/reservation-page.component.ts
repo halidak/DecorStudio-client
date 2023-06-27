@@ -57,7 +57,9 @@ export class ReservationPageComponent implements OnInit {
         console.log(res);
         localStorage.removeItem('cartItems');
         this.cartItems = []; // Update the cartItems array
+        this.number = this.decorService.getCartLength();
         this.success = true;
+        this.decorService.updateCartLength(this.number);
       },
       (err: any) => {
         console.log(err);

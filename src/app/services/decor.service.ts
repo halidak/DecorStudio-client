@@ -85,11 +85,11 @@ export class DecorService {
   }
 
 
-  updateCartLength(): void {
-    const cartItems = this.getCart();
-    const cartLength = cartItems.reduce((total, item) => total + item.quantity, 0);
-    this.cartLengthSubject.next(cartLength);
-  }
+  // updateCartLength(): void {
+  //   const cartItems = this.getCart();
+  //   const cartLength = cartItems.reduce((total, item) => total + item.quantity, 0);
+  //   this.cartLengthSubject.next(cartLength);
+  // }
 
   // Getter za broj stavki u korpi
   getCartLength(): number {
@@ -112,6 +112,11 @@ export class DecorService {
   getReservationsFromStore(id: number){
     return this.http.get(this.url + `/Decor/decores-res/${id}`);
   }
+
+  updateCartLength(cartLength: number): void {
+    this.cartLengthSubject.next(cartLength);
+  }
+   
   
 }
 
