@@ -91,4 +91,8 @@ export class CategoryNavbarComponent implements OnInit, OnDestroy {
   reservationList() {
     this.router.navigate(['reservation-list']);
   }
+
+  employees(){
+    this.router.navigate(['employees'])
+  }
 }

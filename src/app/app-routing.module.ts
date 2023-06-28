@@ -22,6 +22,7 @@ import { VerifyComponent } from './pages/verify/verify.component';
 import { ResetPEmailComponent } from './forms/reset-p-email/reset-p-email.component';
 import { NewPasswordComponent } from './forms/new-password/new-password.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AllEmployeesComponent } from './pages/all-employees/all-employees.component';
 
 const routes: Routes = [
    { path: '', component: HomeComponent },
@@ -44,7 +45,8 @@ const routes: Routes = [
    { path: 'verify/:email/:token', component: VerifyComponent},
    { path: 'password', component: ResetPEmailComponent},
    { path: 'new-password/:email/:token', component: NewPasswordComponent},
-   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: {allowedRole: 4}}
+   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: {allowedRole: 4}},
+   { path: 'employees', component: AllEmployeesComponent, canActivate: [RoleGuard], data: {allowedRole: 1}}
 ];
 
 @NgModule({

@@ -34,6 +34,7 @@
             <button mat-menu-item (click)="appointments()" *ngIf="userService.isEmployee()">Your appointments</button>
             <button mat-menu-item (click)="reservationList()" *ngIf="userService.isCustomer() || userService.isEmployee()">Your reservations</button>
             <button mat-menu-item (click)="reservationList()" *ngIf="userService.isManager()">Store reservations</button>
+            <button mat-menu-item (click)="employees()" *ngIf="userService.isManager()">Store employees</button>
             <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
     </div>

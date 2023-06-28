@@ -129,6 +129,10 @@ export class UserService {
   resetPassword(dto: resetDto){
     return this.http.post(`${this.url}/User/reset-password`, dto);
   }
+
+  getEmployees(id: number){
+    return this.http.get(`${this.url}/User/all-employees/${id}`);
+  }
   
 }
 

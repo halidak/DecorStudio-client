@@ -51,6 +51,7 @@ import { NewPasswordComponent } from './forms/new-password/new-password.componen
 import { AdminComponent } from './pages/admin/admin.component';
 import { AddStoreComponent } from './forms/add-store/add-store.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AllEmployeesComponent } from './pages/all-employees/all-employees.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NewPasswordComponent,
     AdminComponent,
     AddStoreComponent,
+    AllEmployeesComponent,
   ],
   imports: [
     BrowserModule,
